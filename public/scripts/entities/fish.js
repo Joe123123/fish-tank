@@ -1,8 +1,7 @@
 class Fish extends Denizen {
-
   constructor(options) {
     super(options);
-    this.imageUri = '/images/fish01.png';
+    this.imageUri = "/images/goldfish_PNG95.png";
     this.maxSwimSpeed = 100;
     this.makeNewVelocity();
     this.isTasty = true;
@@ -12,9 +11,15 @@ class Fish extends Denizen {
     if (min && min > max) {
       min = 0;
     }
-    var newSpeed = new Vector(randRangeInt(-max, max), randRangeInt(-max / 2, max / 2));
+    var newSpeed = new Vector(
+      randRangeInt(-max, max),
+      randRangeInt(-max / 2, max / 2)
+    );
     while (min && newSpeed.magnitude() < min) {
-      newSpeed = new Vector(randRangeInt(-max, max), randRangeInt(-max / 2, max / 2));
+      newSpeed = new Vector(
+        randRangeInt(-max, max),
+        randRangeInt(-max / 2, max / 2)
+      );
     }
     return newSpeed;
   }
@@ -29,9 +34,19 @@ class Fish extends Denizen {
   }
 
   makeNewVelocity(minMag) {
-    this.swimVelocity = this.generateSwimVelocity(this.maxSwimSpeed, minMag || 0);
+    this.swimVelocity = this.generateSwimVelocity(
+      this.maxSwimSpeed,
+      minMag || 0
+    );
     this.timeUntilSpeedChange = randRangeInt(5);
   }
-
+  update(t) {
+    if (this.outOfBounds(this.tank.getBounds())) {
+      this.kill();
+    } else {
+      for (var i = 0; i < this.calcPhysicsTicks(t); i++) {
+        this.updateOneTick();
+      }
+    }
+  }
 }
-
