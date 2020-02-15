@@ -1,5 +1,4 @@
 class GoFish extends Fish {
-
   constructor(options) {
     super(options);
     this.surgeSecondsLeft = 0;
@@ -8,15 +7,19 @@ class GoFish extends Fish {
   }
 
   updateOneTick() {
-    var delta = this.swimVelocity.scale(PHYSICS_TICK_SIZE_S * (1 + this.surgeSecondsLeft * this.surgMult));
+    var delta = this.swimVelocity.scale(
+      PHYSICS_TICK_SIZE_S * (1 + this.surgeSecondsLeft * this.surgMult)
+    );
     this.position.addMut(delta);
     this.timeUntilSpeedChange -= PHYSICS_TICK_SIZE_S;
     if (this.timeUntilSpeedChange < 0) {
       this.makeNewVelocity();
     }
-    this.surgeSecondsLeft = Math.max(0, this.surgeSecondsLeft - PHYSICS_TICK_SIZE_S);
+    this.surgeSecondsLeft = Math.max(
+      0,
+      this.surgeSecondsLeft - PHYSICS_TICK_SIZE_S
+    );
   }
-
 
   onClick(event) {
     this.surgeSecondsLeft = this.maxSurge;
