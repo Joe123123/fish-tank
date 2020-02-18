@@ -1,10 +1,10 @@
 class Fish extends Denizen {
   constructor(options) {
     super(options);
-    this.imageUri = "/images/goldfish_PNG95.png";
+    this.imageUri = "/images/moving-gold.gif";
     this.maxSwimSpeed = 100;
     this.makeNewVelocity();
-    this.isTasty = true;
+    this.isTasty = true; // normal fush born tasty
   }
 
   generateSwimVelocity(max, min) {

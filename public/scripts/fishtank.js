@@ -36,10 +36,10 @@ class Fishtank {
     let specieses = Object.values(this.specieses);
     let randomNum = randRangeInt(50);
     let index;
-    if (randomNum >= 0 && randomNum <= 5) {
+    if (randomNum >= 0 && randomNum <= 3) {
       index = 0;
     }
-    if (randomNum > 5 && randomNum <= 10) {
+    if (randomNum > 3 && randomNum <= 10) {
       index = 1;
     }
     if (randomNum > 10 && randomNum <= 20) {

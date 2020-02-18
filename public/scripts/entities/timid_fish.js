@@ -2,7 +2,7 @@ class TimidFish extends Fish {
   constructor(options) {
     super(options);
     this.imageUri = "/images/goldfish_PNG40.png";
-    this.maxSwimSpeed = 500;
+    this.maxSwimSpeed = 500; //higher max speed
   }
   update(t) {
     if (this.outOfBounds(this.tank.getBounds())) {
@@ -12,6 +12,7 @@ class TimidFish extends Fish {
         this.updateOneTick();
       }
     }
+    // test range 60 to updateonetick
     let arr = this.tank.getProximateDenizens(this.position, 60);
     if (arr.length > 2) {
       this.updateOneTick();
@@ -27,6 +28,7 @@ class TimidFish extends Fish {
   }
 
   makeNewVelocity() {
+    // higher new speed
     this.swimVelocity = this.generateSwimVelocity(
       this.maxSwimSpeed,
       this.maxSwimSpeed / 2

@@ -3,10 +3,11 @@ class Starter extends Denizen {
     super(options);
     this.imageUri = "/images/volcano.jpg";
     this.position.y += this.height;
-    this.isUneatable = true;
+    this.isUneatable = true; // uneatable item
   }
 
   update() {
+    // auto generate seed when denizens smaller than 30
     if (Object.keys(this.tank.denizens).length < 30) {
       this.onClick();
     }
